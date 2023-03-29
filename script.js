@@ -37,6 +37,18 @@ while (restartGame) {
         rangeNum = parseInt(rangeNum);
     }
 
+    // Create the random number within the range entered by the user
+    randomNum = Math.floor(Math.random() * rangeNum) + 1;
+    console.log(rangeNum);
+
+    // Prompts the user to enter a number of attempts allowed
+    lives = parseInt(prompt('Please enter a number of attempts allowed.'));
+    console.log(lives);
+    
+    // Verifying the users entry for the number of attempts allowed is a number greater than 0 and equal to or less than the rangeNum
+    while (!lives || lives < 1 || lives > rangeNum) {
+    lives = parseInt(prompt('Please enter a number of attempts allowed.'));
+    }
 
 
 
