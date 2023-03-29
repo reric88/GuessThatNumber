@@ -35,7 +35,7 @@ while (restartGame) {
     while (!rangeNum || rangeNum < 1) {
         rangeNum = prompt(enterNumText);
         rangeNum = parseInt(rangeNum);
-    }
+    };
 
     // Create the random number within the range entered by the user
     randomNum = Math.floor(Math.random() * rangeNum) + 1;
@@ -47,17 +47,37 @@ while (restartGame) {
     
     // Verifying the users entry for the number of attempts allowed is a number greater than 0 and equal to or less than the rangeNum
     while (!lives || lives < 1 || lives > rangeNum) {
-    lives = parseInt(prompt('Please enter a number of attempts allowed.'));
-    }
+        lives = parseInt(prompt('Please enter a number of attempts allowed.'));
+        console.log(lives);
+    };
+
+    // Ask the user to enter a guess in the range they specified
+    guess = prompt(`Please enter a guess from 1 to ${rangeNum}. You have ${lives} attempts remaining.`);
+
+    // Continue looping until the user guesses the correct number or runs out of attempts. As this is currently setup, the
+    while (true) {
+        
+        // Displays the number when a codeword is entered
+            if (guess === 'pickle') {
+                alert(`The number is ${randomNum}.`);
+                guess = prompt(`Please enter a guess from 1 to ${rangeNum}. You have ${lives} attempts remaining.`);
+            }
+        
+            // convert users guess to a number
+            guess = parseInt(guess);
 
 
 
 
 
+            // Move when needed
+        break;
+    };
 
 
 
 
+    // remove when needed
     restartGame = false;
 }
 
