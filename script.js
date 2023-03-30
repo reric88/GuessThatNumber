@@ -58,7 +58,7 @@ while (restartGame) {
     while (true) {
         
         // Displays the number when a codeword is entered
-            if (guess === 'pickle') {
+            while (guess === 'pickle') {
                 alert(`The number is ${randomNum}.`);
                 guess = prompt(`Please enter a guess from 1 to ${rangeNum}. You have ${lives} attempts remaining.`);
             }
@@ -66,19 +66,59 @@ while (restartGame) {
             // convert users guess to a number
             guess = parseInt(guess);
 
+            // Verify the users guess is a number greater than zero and less than or equal to the range they set
+            while (!guess || guess < 1 || guess > rangeNum) {
+                guess = parseInt(prompt(`Please enter a number from 1 to ${rangeNum}`));
+            };
 
+            // Remove attempt for each guess
+            lives--;
 
+            // if else
+            if (guess === randomNum) {
+                alert(`CONGRATULATIONS, YOU GUESSED THE CORRECT NUMBER! ${randomNum}`);
+                break;
+                // Check if the user has any attempts left. If not, the game ends and the number is displayed to the user
+            } else if (lives === 0) {
+                alert(`No Lives Remaining. The number was ${randomNum}`);
+                break;
+            // Checks to see if the guess is too low and prompts the user to answer
+            } else if (guess < randomNum) {
+                guess = prompt(`Number too low. You have ${lives} attempts remaining.`);
+                // The only other possibility is for the guess to be too high, so we use else instead of else if
+            } else {
+                guess = prompt(`Number too high. You have ${lives} attempts remaining.`);
+            }
 
+            
+        }
+        // Ask if the user would like to play again
+        playAgain = prompt('Would you like to play again? (Y)es or (N)o.')
+
+        // Loop continues until the user enters a valid response
+        while (true) {
+            // Check if the user says no
+            if (playAgain.toUpperCase() === 'N') {
+                alert('Thanks for playing!')
+                restartGame = false;
+                break;
+                // Check if the user says yes
+            } else if (playAgain.toUpperCase() === 'Y') {
+                // The game restarts
+                break;
+            }else {
+                playAgain = prompt('Please enter Y or N')
+        } 
 
             // Move when needed
-        break;
+            // break;
     };
 
 
 
 
     // remove when needed
-    restartGame = false;
+    // restartGame = false;
 }
 
 
